@@ -14,7 +14,8 @@ class Movie extends Component{
         return (
             <div>
                 <h1>Movie Title: {this.props.title}</h1>
-                <MoviePoster poster={this.props.poster}></MoviePoster>
+                {/* <MoviePoster poster={this.props.poster}></MoviePoster> */}
+                <MoviePosterStateless poster={this.props.poster}/>
             </div>
         )
     }
@@ -31,6 +32,12 @@ class MoviePoster extends Component{
             <img src={this.props.poster}></img>
         )
     }
+}
+
+function MoviePosterStateless({poster}) {
+    return (
+        <img src={poster} alt="Movie Img"/>
+    )
 }
 
 export default Movie
