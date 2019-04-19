@@ -66,3 +66,48 @@ We suggest that you begin by typing:
 Happy hacking!
 PS C:\Users\media\Documents\GitHub\ReactJS-Study>
 ```
+
+## Deploy
+
+```
+PS C:\Users\media\Documents\GitHub\ReactJS-Study\movie_app> yarn build
+yarn run v1.13.0
+$ react-scripts build
+Creating an optimized production build...
+Compiled with warnings.
+
+./src/App.js
+  Line 2:  'logo' is defined but never used  no-unused-vars
+
+./src/Movie.js
+  Line 65:   'MoviePoster' is defined but never used                                                                    no-unused-vars
+  Line 73:  img elements must have an alt prop, either with meaningful text, or an empty string for decorative images  jsx-a11y/alt-text
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+File sizes after gzip:
+
+  40.78 KB  build\static\js\2.df80c6b0.chunk.js
+  1.28 KB   build\static\js\main.287b367a.chunk.js
+  819 B     build\static\css\main.c94e2b97.chunk.css
+  764 B     build\static\js\runtime~main.c5541365.js
+
+The project was built assuming it is hosted at the server root.
+You can control this with the homepage field in your package.json.
+For example, add this to build it for GitHub Pages:
+
+  "homepage" : "http://myname.github.io/myapp",
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  yarn global add serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://bit.ly/CRA-deploy
+
+Done in 13.16s.
+```
