@@ -6,7 +6,9 @@ class Movie extends Component {
 
     static propTypes = {
         title: PropTypes.string.isRequired,
-        poster: PropTypes.string
+        poster: PropTypes.string,
+        genres: PropTypes.array.isRequired,
+        synopsis: PropTypes.string.isRequired
     }
 
     render() {
@@ -19,17 +21,37 @@ class Movie extends Component {
         //     </div>
         // )
         return (
-            <MovieStateless title={this.props.title} poster={this.props.poster} />
+            <MovieStateless title={this.props.title} poster={this.props.poster} genres={this.props.genres} synopsis={this.props.synopsis} />
         )
     }
 }
 
-function MovieStateless({ title, poster }) {
+function MovieStateless({ title, poster, genres, synopsis }) {
     return (
-        <div>
-            <h1>Movie Title: {title}</h1>
-            <MoviePosterStateless poster={poster} />
+        <div className="Movie">
+            <div className="Movie__Columns">
+                <MoviePosterStateless poster={poster} alt={title}/>
+            </div>
+            <div className="Movie__Columns">
+                <h1>{title}</h1>
+                <div className="Movie__Genres">
+                    {genres.map((genre, index) => {
+                        return (
+                            <MovieGenreStateless genre={genre} key={index} />
+                        )
+                    })}
+                </div>
+                <p className="Movie_Synopsis">
+                    {synopsis}
+                </p>
+            </div>
         </div>
+    )
+}
+
+function MovieGenreStateless({genre}) {
+    return (
+        <span className="Movie__Genre">{genre}</span>
     )
 }
 
@@ -41,19 +63,23 @@ class MoviePoster extends Component {
 
     render() {
         return (
-            <img src={this.props.poster}></img>
+            <img className="Movie__Poster" src={this.props.poster}></img>
         )
     }
 }
 
-function MoviePosterStateless({ poster }) {
+function MoviePosterStateless({ poster, alt }) {
     return (
-        <img src={poster} alt="Movie Img" />
+        <img src={poster} alt={alt} title={alt} />
     )
 }
 
 MoviePosterStateless.propTypes = {
     poster: PropTypes.string.isRequired
+}
+
+MovieGenreStateless.propTypes = {
+    genre: PropTypes.string.isRequired
 }
 
 export default Movie
