@@ -22,9 +22,11 @@ class App extends Component {
     .then(function(response) {
       return response.json()
     })
-    .then(function(json) {
-      console.log("json", json)
-    })
+    .then(json => {
+      this.setState({
+        movies: json.data.movies
+      })
+    }) 
     .catch(function(reason) {
       console.log("err", reason)
     })
@@ -37,7 +39,7 @@ class App extends Component {
   _renderMovieView = () => {
     const movies = this.state.movies.map((movie, index) => {
       return (
-        <Movie title={movie.title} poster={movie.poster} key={index}/>
+        <Movie title={movie.title} poster={movie.medium_cover_image} key={index}/>
       )
     })
 
