@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './Movie.css'
+import LinesEllipsis from 'react-lines-ellipsis'
 
 class Movie extends Component {
 
@@ -41,9 +42,15 @@ function MovieStateless({ title, poster, genres, synopsis }) {
                         )
                     })}
                 </div>
-                <p className="Movie_Synopsis">
-                    {synopsis}
-                </p>
+                <div className="Movie__Synopsis">
+                    <LinesEllipsis
+                        text={synopsis}
+                        maxLine='3'
+                        ellipsis=' ...'
+                        trimRight
+                        basedOn='letters'
+                        />
+                </div>
             </div>
         </div>
     )
@@ -70,7 +77,7 @@ class MoviePoster extends Component {
 
 function MoviePosterStateless({ poster, alt }) {
     return (
-        <img src={poster} alt={alt} title={alt} />
+        <img className="Movie__Poster" src={poster} alt={alt} title={alt} />
     )
 }
 
